@@ -9,7 +9,8 @@
     </div>
 
     <!-- Display the generated data/items (sama seperti yang di soal testnya)-->
-    <h3 class="title2">&lt;input-panel v-model="items"/&gt;</h3>
+    <p class="title2">&lt;input-panel v-model="items"/&gt;</p>
+    <p class="title2">generated data/items</p>
     <pre class="generated-data">
       [
       {{ items.map(item => JSON.stringify(item)).join(",\n  ") }}
@@ -56,23 +57,25 @@ export default {
 
 /* Style for the generated data/items display */
 .generated-data {
-  color: black;
-  font-family: monospace;
-  font-size: 16px;
+  color: #777777;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
 }
 
 /* Style for the title "InputPanel Component" */
 .title {
-  text-align: center;
+  text-align: left;
   margin-top: 20px;
-  font-size: 24px;
+  font-size: 20px;
   font-family: Arial, sans-serif;
-  color: black;
+  color: #777777;
 }
 
 /* Style for the title "InputPanel Component" */
 .title2 {
-  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #777777;
+  font-size: 14px;
 }
 
 </style>
