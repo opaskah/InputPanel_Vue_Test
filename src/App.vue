@@ -13,7 +13,7 @@
     <p class="title2">generated data/items</p>
     <pre class="generated-data">
       [
-      {{ items.map(item => JSON.stringify(item)).join(",\n  ") }}
+      {{ items.map(item => `{criteria:'${item.criteria.toLowerCase()}',input:'${item.input}'}`).join(",\n  ") }}
       ]
     </pre>
   </div>

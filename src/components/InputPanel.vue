@@ -2,9 +2,12 @@
   <div class="input-panel">
     <!-- Add Item button -->
     <button @click="addItem" class="add-item">+ Add Item</button>
-    <div v-for="(item, index) in items" :key="index">
-      <!-- Render InputRow component for the criteria and input -->
-      <InputRow v-model:criteria="item.criteria" v-model:input="item.input" @remove="removeItem(index)" />
+    <div v-for="(item, index) in items" :key="item.id">
+      <InputRow
+        v-model:criteria="item.criteria"
+        v-model:input="item.input"
+        @remove="removeItem(item.id)"
+      />
     </div>
   </div>
 </template>
@@ -21,7 +24,7 @@ export default {
   props: {
     modelValue: {
       type: Array,
-      default: [],
+      default: () => [],
     },
   },
   computed: {
@@ -36,14 +39,14 @@ export default {
   },
   methods: {
     addItem() {
-      // Add a new row with default values
-      this.items.push({ criteria: "", input: "" });
+      // Add a new row with an id
+      this.items.push({ id: Date.now(), criteria: "", input: "" });
     },
-    removeItem(index) {
-      // Remove the row at the specified index
-      this.items.splice(index, 1);
+    removeItem(id) {
+      // Remove the row by id
+      this.items = this.items.filter(item => item.id !== id);
     },
-  },
+  }
 };
 </script>
 
